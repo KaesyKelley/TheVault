@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'css/edit_style.css' %}">   
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Baloo+Thambi+2&display=swap" rel="stylesheet">  
+    <title>Edit User</title>
+</head>
+<body>
+    {% if messages %}
+<ul class="messages">    
+    {% for message in messages %}    
+        <li {% if message.tags %} class="{{ message.tags }}"{% endif %}>{{ message }}</li>    
+    {% endfor %}
+</ul>
+{% endif %}
+    <div class="wrapper">
+        <div class="container">
+            <form action='/update/{{this_user.id}}' method="POST">
+            {%csrf_token%}
+            <label for="first_name">First Name:</label>
+            <input value="{{this_user.first_name}}" name= "first_name">
+            <label for="last_name">Last Name:</label>
+            <input value="{{this_user.last_name}}" name= "last_name">
+            <label for="email">Email:</label>
+            <input value="{{this_user.email}}" name= "email">
+            <label for="username">Username:</label>
+            <input value="{{this_user.username}}" name= "username">
+            <label for="password">Password:</label>
+            <input value="{{this_user.password}}" name= "password">
+            <label for="pw_confirm">Password Confirmation:</label>
+            <input value="{{this_user.pw_confirmation}}" name= "pw_confirmation">
+            <input type="submit" value="Submit">
+            </form>    
+</body>
+</html>
+
+<!-- <label for="first_name">First Name:</label>
+            <input type="text" id="first_name" name="first_name"></p>
+    
+            <p><label for="last_name">Last Name:</label>
+            <input type="text" id="last_name" name="last_name"></p>
+
+            <p><label for="email">Email:</label>
+                <input type="text" id="email" name="email"></p>
+    
+            <p><label for="username">Username:</label>
+            <input type="text" id="username" name="username"></p>
+    
+            <p><label for="password">Password:</label>
+            <input type="password" id="password" name="password"></p>
+            
+            <p><label for="pw_confirm">Password Confirm:</label>
+            <input type="password" id="pw_confirm" name="password_confirmation"></p> -->

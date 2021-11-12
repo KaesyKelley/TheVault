@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Baloo+Thambi+2&display=swap" rel="stylesheet">  
+    <title>New Recipe</title>
+</head>
+<body>
+    <div class="wrapper">
+        <div id="dashboard"><a href="/dashboard">Dashboard</a></div>
+        <h1>Add a New Recipe</h1>
+    <div class="recipe">
+        {% if messages %}
+    <ul class="messages">    
+        {% for message in messages %}    
+            <li {% if message.tags %} class="{{ message.tags }}"{% endif %}>{{ message }}</li>    
+        {% endfor %}
+    </ul>
+    {% endif %}
+    <form action="/recipe/create" method="POST">
+        {% csrf_token %}
+            <label for="title">Title:</label>
+            <input type="text" id="title" name="title"></p>
+    
+            <p><label for="description">Brief Description:</label>
+            <input type="text" id="description" name="description"></p>
+
+            <p><label for="ingredients">Ingredients:</label>
+            <input type="text" id="ingredients" name="ingredients"></p>
+
+            <p><label for="recipe_content">Recipe:</label>
+            <input type ="text" id="recipe_content" name="recipe_content"></p>
+    
+            <!-- <p><label for="image">Image:</label> -->
+            <!-- <input type="text" id="username" name="username"></p> -->
+        <button>Add New Recipe</button>
+    </form>
+    
+</body>
+</html>

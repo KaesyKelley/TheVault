@@ -1,0 +1,35 @@
+{% for recipe in all_recipes %}
+                    {% if recipe.posted_by.id == logged_user.id %}
+                        {% if recipe.granted == False %}
+                            <tr>
+                                <td>{{recipe.title}}</td>
+                                <td>{{recipe.created_at}}</td>
+                                <td><a href="/granted/{{recipe.id}}">Granted</a>
+                                    
+                                    <form action="{{recipe.id}}/cancel" method="POST" id="remove">
+                                        {%csrf_token%}
+                                        <input type="submit" value="remove">      
+                                    </form>
+                                    <a href="/edit/{{recipe.id}}">edit</a>
+                                    
+                                </td>
+                            </tr>
+                        {% endif %}
+                    {% endif %}
+                {% endfor %}
+            <tbody>
+
+                <div class="wrapper">
+                    <div class="container">
+                        <form action='/update/{{this_recipe.id}}' method="POST">
+                        {%csrf_token%}
+                        <label for="title">Title:</label>
+                        <input value="{{this_recipe.title}}" name= "title">
+                        <label for="description">Brief Description:</label>
+                        <input value="{{this_recipe.description}}" name= "description">
+                        <label for="ingredients">Ingredients:</label>
+                        <input value="{{this_recipe.ingredients}}" name= "ingredients">
+                        <label for="recipe_content">Recipe:</label>
+                        <input value="{{this_content.recipe}}" name= "recipe_content">
+                        <input type="submit" value="Submit">
+                        </form>
