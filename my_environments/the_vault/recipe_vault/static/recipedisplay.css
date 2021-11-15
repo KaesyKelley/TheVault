@@ -1,0 +1,36 @@
+*{
+    margin: 0px;
+    padding: 0px;
+    
+}
+
+.wrapper{
+    font-family: 'Baloo Thambi 2', cursive;
+    width: 900px;
+    padding: 4px;
+}     
+
+#dashboard{
+    text-align: right;
+    font-family: 'Baloo Thambi 2', cursive;
+}
+
+.recipes{
+    margin-left: 10px;
+    margin-right:10px;
+}
+
+.recipes h1{
+text-align: center;
+color:red;
+}
+
+.recipes h2{
+    text-align: left;
+    color:black;
+}
+
+.recipes h3{
+    text-align: justify;
+    color:black;
+}

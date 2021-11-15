@@ -5,29 +5,31 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     {% load static %}
-    <link rel="stylesheet" href="{% static 'css/edit_style.css' %}">   
+    <link rel="stylesheet" href="{% static 'recipedisplay.css' %}">   
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Baloo+Thambi+2&display=swap" rel="stylesheet">  
     <title>View Recipe</title>
 </head>
 <body>
+    <div class="wrapper">
+    <div id="dashboard"><a href="/dashboard">Dashboard</a></div>
+
     {% if messages %}
-<ul class="messages">    
-    {% for message in messages %}    
-        <li {% if message.tags %} class="{{ message.tags }}"{% endif %}>{{ message }}</li>    
-    {% endfor %}
-</ul>
-{% endif %}
+    <ul class="messages">
+        {% for message in messages %}
+        <li {% if message.tags %} class="{{ message.tags }}" {% endif %}>{{ message }}</li>
+        {% endfor %}
+    </ul>
+    {% endif %}
 
 <div class="recipes">
-    {% for recipe in all_recipes %}
-    <h1>{{recipe.title}}</h1>
-    <h2>Submitted by: {{recipe.posted_by.username}}</h2>
-    <h3>Ingredients: {{recipe.ingredients}}</h3>
-    <h3>{{recipe.recipe_content}}</h3>
-    <a href="/recipe_vault/templates/dashboard.html">Dashboard</a>
+    
 
-    {% endfor %}
-
+    <h1>{{this_recipe.title}}</h1>
+    <h2>Submitted by: {{this_user.username}}</h2>
+    <h3>Ingredients: {{this_recipe.ingredients}}</h3>
+    <h3>Recipe:{{this_recipe.recipe_content}}</h3>
+    
+</div>
 </div>

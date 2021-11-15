@@ -1,17 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'userdisplay_style.css' %}">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Baloo+Thambi+2&display=swap" rel="stylesheet">  
+    <title>User Display</title>
+</head>
+<body>
+    <div id="dashboard"><a href="/dashboard">Dashboard</a></div>
+    
 {% for recipe in all_recipes %}
                     {% if recipe.posted_by.id == logged_user.id %}
-                        {% if recipe.granted == False %}
+                    <a href="/edit/{{user.id}}">Edit Profile</a> 
+                    <div class="col">
+                        <p></p><p></p>
+                        <table class="table table-striped">
+                            <thead>
                             <tr>
-                                <td>{{recipe.title}}</td>
-                                <td>{{recipe.created_at}}</td>
-                                <td><a href="/granted/{{recipe.id}}">Granted</a>
+                                <td>{{this_recipe.title}}</td>
+                                <td><a href="/edit/{{recipe.id}}">Edit</a></td>
                                     
-                                    <form action="{{recipe.id}}/cancel" method="POST" id="remove">
-                                        {%csrf_token%}
-                                        <input type="submit" value="remove">      
-                                    </form>
+                                    
                                     <!-- KEEP -->
-                                    <a href="/edit/{{recipe.id}}">edit</a> 
+                                    
                                     
                                 </td>
                             </tr>
@@ -19,3 +35,31 @@
                     {% endif %}
                 {% endfor %}
             <tbody>
+    </body>
+</html>
+
+<!-- 
+            <tr>
+                <th scope="col">Title</th>
+                <th scope="col">Username</th>
+                <th scope="col">Brief Description</th>
+            </tr>
+        </thead>
+            <tbody>
+                {% for recipe in all_recipes %}
+                        <tr>
+                            
+                            <td><a href="recipe/{{recipe.id}}">{{recipe.title}}</a></td>
+                            {% for recipe in thisrecipe.thisuser %}
+                            <td><a href="user/{{user.id}}">{{this_user.username}}</a></td>
+                            {% endfor %}
+                            <th scope="row"> <td>{{recipe.description}}</td></th>
+                        </tr>
+                {% endfor %}
+
+
+                <form action="{{recipe.id}}/cancel" method="POST" id="remove">
+                                        {%csrf_token%}
+                                        <input type="submit" value="remove">      
+                                    </form>
+ -->

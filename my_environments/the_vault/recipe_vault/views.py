@@ -79,7 +79,7 @@ def create_recipe(request):
             description=request.POST['description'],
             ingredients=request.POST['ingredients'],
             recipe_content=request.POST['recipe_content'],
-            posted_by.set()
+            # posted_by=request.POST['posted_by'],
         )
         return redirect('/dashboard')
     
@@ -161,7 +161,7 @@ def user_display(request, user_id): #GET request
         return redirect ('/')
     this_user= User.objects.get(id=user_id)
     context={
-        'all_user_recipes': this_user.recipe.all(),
+        'all_user_recipes': this_user.objects.all(),
         'this_user': this_user
     }
     return render (request, 'userdisplay.html', context)
@@ -169,7 +169,11 @@ def user_display(request, user_id): #GET request
 def recipe_display(request,recipe_id):
     if request.method == "POST" or "logged_user" not in request.session:
         return redirect ('/')
-    context ={
-        'this_recipe': Recipe.objects.get(id=recipe_id),
+    context = {
+        "this_recipe": Recipe.objects.get(id=recipe_id),
     }    
     return render (request, "recipedisplay.html", context)
+
+def logout(request):
+    request.session.flush()
+    return redirect('/')

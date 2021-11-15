@@ -1,20 +1,28 @@
-{% for recipe in all_recipes %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'editrecipe_style.css' %}">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Baloo+Thambi+2&display=swap" rel="stylesheet">  
+    <title>Edit Recipe</title>
+</head>
+<body>
+    
+    <h1>Edit Your Recipe</h1>
+    <a href="/dashboard">Dashboard</a>
+        {% for recipe in all_recipes %}
                     {% if recipe.posted_by.id == logged_user.id %}
-                        {% if recipe.granted == False %}
-                            <tr>
-                                <td>{{recipe.title}}</td>
-                                <td>{{recipe.created_at}}</td>
-                                <td><a href="/granted/{{recipe.id}}">Granted</a>
-                                    
-                                    <form action="{{recipe.id}}/cancel" method="POST" id="remove">
-                                        {%csrf_token%}
-                                        <input type="submit" value="remove">      
-                                    </form>
-                                    <a href="/edit/{{recipe.id}}">edit</a>
-                                    
-                                </td>
-                            </tr>
-                        {% endif %}
+                    <a href="/edit/{{recipe.id}}">edit</a>
+                    <form action="{{recipe.id}}/cancel" method="POST">
+                        {%csrf_token%}
+                        <input type="submit" value="Delete">
+                    </form>
+                    {% endif %}
                     {% endif %}
                 {% endfor %}
             <tbody>
@@ -31,5 +39,21 @@
                         <input value="{{this_recipe.ingredients}}" name= "ingredients">
                         <label for="recipe_content">Recipe:</label>
                         <input value="{{this_content.recipe}}" name= "recipe_content">
-                        <input type="submit" value="Submit">
+                        <input type="submit" value="Resubmit">
                         </form>
+
+                        <form action="{{recipe.id}}/cancel" method="POST" id="remove">
+                            {%csrf_token%}
+                            <input type="submit" value="remove">      
+                        </form> 
+
+</body>
+</html>
+
+<!-- {% for recipe in all_recipes %}
+                    {% if recipe.posted_by.id == logged_user.id %}
+                            <tr>
+                                <td>{{this_user.title}}</td>
+                                <td>{{recipe.created_at}}</td>
+                                    
+                                    

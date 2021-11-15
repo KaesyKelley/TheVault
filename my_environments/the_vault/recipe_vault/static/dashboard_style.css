@@ -1,0 +1,15 @@
+*{
+    margin: 0px;
+    padding: 0px;
+    
+}
+
+#wrapper{
+    font-family: 'Baloo Thambi 2', cursive;
+    width: 1000px;
+}     
+
+#dash{
+    color:red;
+    align-content: center;
+}

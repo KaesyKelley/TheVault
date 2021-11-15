@@ -1,0 +1,30 @@
+*{
+    margin: 0px;
+    padding: 0px;
+    
+}
+
+.wrapper{
+    font-family: 'Baloo Thambi 2', cursive;
+    width: 900px;
+    padding: 4px;
+}     
+
+#dashboard{
+    text-align: right;
+}
+
+.container p{
+    padding:4px;
+    text-align: center;
+}
+
+h1{
+    padding: 4px;
+    text-align: center;
+    color: red;
+}
+
+a{
+    text-align: right;
+}
