@@ -79,7 +79,7 @@ def create_recipe(request):
             description=request.POST['description'],
             ingredients=request.POST['ingredients'],
             recipe_content=request.POST['recipe_content'],
-            posted_by=this_user
+            posted_by.set()
         )
         return redirect('/dashboard')
     

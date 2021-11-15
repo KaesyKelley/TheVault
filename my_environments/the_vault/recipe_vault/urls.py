@@ -5,7 +5,7 @@ urlpatterns = [
     path('', views.index),
     path('user/create_user', views.create_user),
     path('dashboard', views.dashboard),
-    path('user/<int:user_id>recipe', views.user_display),
+    path('user/<int:user_id>/recipe', views.user_display),
     path('user/login', views.login),
     path('recipe/create', views.create_recipe),
     #path('create', views.create_recipe),
@@ -15,7 +15,6 @@ urlpatterns = [
     path('logout', views.index),
     path('update/<int:recipe_id>', views.update_recipe),
     path('update/<int:user_id>', views.update_user),
-    #path('granted/<int:recipe_id>', views.granted)
-    path('<int:recipe_id>', views.recipe_display),
+    path('recipe/<int:recipe_id>', views.recipe_display),
     path('edituser', views.edit_user)
 ]
