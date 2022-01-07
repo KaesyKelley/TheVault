@@ -46,7 +46,7 @@
                             
                             <td><a href="recipe/{{recipe.id}}">{{recipe.title}}</a></td>
                             {% for recipe in thisrecipe.thisuser %}
-                            <td><a href="user/{{user.id}}">{{this_user.username}}</a></td>
+                            <td><a href="user/{{user.id}}">{{recipe.thisuser.username}}</a></td>
                             {% endfor %}
                             <th scope="row"> <td>{{recipe.description}}</td></th>
                         </tr>

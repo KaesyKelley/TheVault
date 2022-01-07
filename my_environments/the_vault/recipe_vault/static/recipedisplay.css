@@ -28,9 +28,11 @@ color:red;
 .recipes h2{
     text-align: left;
     color:black;
+    padding-bottom: 10px;
 }
 
 .recipes h3{
     text-align: justify;
     color:black;
+    padding-top: 10px;
 }

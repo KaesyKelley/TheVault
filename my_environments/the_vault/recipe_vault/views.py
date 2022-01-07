@@ -46,7 +46,7 @@ def login(request):
         if user:
             log_user = user[0]
             if bcrypt.checkpw(request.POST['password'].encode(), log_user.password.encode()):
-                request.session['log_user'] = log_user.id
+                request.session['logged_user'] = log_user.id
                 return redirect('/dashboard')
             else:
                 messages.error(request, "Email or Password is incorrect.")
@@ -61,6 +61,9 @@ def dashboard(request):
         'logged_user': User.objects.get(id=request.session['logged_user']),
         'all_recipes': Recipe.objects.all()
     }
+    print( User.objects.get(id=request.session['logged_user']).first_name)
+    print(request.session['logged_user'])
+    # print(context['all_recipes'][0].posted_by)
     return render(request, 'dashboard.html', context)
 
 def create_recipe(request):
@@ -79,8 +82,9 @@ def create_recipe(request):
             description=request.POST['description'],
             ingredients=request.POST['ingredients'],
             recipe_content=request.POST['recipe_content'],
-            # posted_by=request.POST['posted_by'],
+            # posted_by=this_user
         )
+        new_recipe.posted_by.add(this_user)
         return redirect('/dashboard')
     
 def edit_recipe(request, recipe_id):
@@ -161,7 +165,7 @@ def user_display(request, user_id): #GET request
         return redirect ('/')
     this_user= User.objects.get(id=user_id)
     context={
-        'all_user_recipes': this_user.objects.all(),
+        'all_recipes': this_user.thisuser.all(),
         'this_user': this_user
     }
     return render (request, 'userdisplay.html', context)

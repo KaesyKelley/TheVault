@@ -22,7 +22,7 @@
                         <table class="table table-striped">
                             <thead>
                             <tr>
-                                <td>{{this_recipe.title}}</td>
+                                <td>{{recipe.title}}</td>
                                 <td><a href="/edit/{{recipe.id}}">Edit</a></td>
                                     
                                     
@@ -32,7 +32,6 @@
                                 </td>
                             </tr>
                         {% endif %}
-                    {% endif %}
                 {% endfor %}
             <tbody>
     </body>
